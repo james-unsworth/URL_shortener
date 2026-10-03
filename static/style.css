@@ -1,0 +1,20 @@
+#mainBox {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-top: 50px;
+  margin-left: 75px;
+  margin-right: 75px;
+}
+
+#pageTitle {
+  margin-top: 50px;
+  margin-left: 50px;
+}
+
+#error { 
+  color: var(--pico-form-element-invalid-border-color); 
+}
+
+
