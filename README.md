@@ -26,11 +26,13 @@ git clone https://github.com/james-unsworth/URL_shortener
 cd URL_shortener
 python3 -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-python app.py
+pip install -e .
+shorturl
 ```
 
-Then open <http://127.0.0.1:5000>. The database file `url_map.db` is created automatically on first run.
+Then open <http://127.0.0.1:5000>. The database file `url_map.db` is created next to `app.py` on first run, wherever you launch the command from.
+
+`pip install -e .` installs the `shorturl` command (Flask included). To run without installing the package, use `pip install -r requirements.txt` and then `python app.py`.
 
 ## API
 
@@ -93,6 +95,7 @@ Redirects to the stored URL. If the code does not exist it returns `404`.
 ```
 URL_shortener/
 ├── app.py              # Flask app: routes, validation, database access
+├── pyproject.toml      # packaging; defines the `shorturl` command
 ├── requirements.txt
 ├── templates/
 │   └── index.html      # Web page

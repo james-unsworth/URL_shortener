@@ -2,12 +2,14 @@ from flask import Flask, request, redirect, render_template, jsonify
 from urllib.parse import urlparse
 import secrets
 import sqlite3
+from pathlib import Path
 app = Flask(__name__)
 
 MAX_URL_LENGTH = 2048
 ALLOWED_SCHEMES = ["http", "https"]
+DB_PATH = Path(__file__).resolve().parent / "url_map.db"
 
-conn = sqlite3.connect('url_map.db', check_same_thread=False)
+conn = sqlite3.connect(DB_PATH, check_same_thread=False)
 conn.execute("CREATE TABLE IF NOT EXISTS url_map (shortened TEXT PRIMARY KEY, url TEXT)")
 
 def error(msg: str, err_code: int):
@@ -75,5 +77,8 @@ def direct(code):
     else:
         return error("This URL isn't in our system.", 404)
 
-if __name__ == "__main__":
+def main():
     app.run()
+
+if __name__ == "__main__":
+    main()
