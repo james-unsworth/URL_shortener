@@ -75,12 +75,12 @@ Redirects to the stored URL. If the code does not exist it returns `404`.
 ## Known limitations
 
 - **Open redirect:** The service redirects to any stored `http`/`https` URL, so it could be used to disguise links in phishing. There is no blocklist.
-- **No rate limiting or authentication:**
-- **Single shared database connection.** The app uses one SQLite connection with `check_same_thread=False` and no locking. This is fine for local use only.
-- **Development server only.** It runs with Flask's built-in server, not a production server.
-- **Minimal URL validation by design.** For example, `http://123` is accepted as a host, and spaces inside a host are not rejected. The URL is not fetched to check that it exists.
-- **No request body size limit** beyond the 2048-character URL cap
-- **Generic network error.** A non-JSON server error shows the same "couldn't reach the server" message as a network failure.
+- **No rate limiting or authentication.**
+- **Single shared database connection:** The app uses one SQLite connection with `check_same_thread=False` and no locking. This is fine for local use only.
+- **Development server only:** It runs with Flask's built-in server, not a production server.
+- **Minimal URL validation by design:** For example, `http://123` is accepted as a host, and spaces inside a host are not rejected. The URL is not fetched to check that it exists.
+- **No request body size limit:** beyond the 2048-character URL cap
+- **Generic network error:** A non-JSON server error shows the same "couldn't reach the server" message as a network failure.
 
 ## Possible improvements
 
